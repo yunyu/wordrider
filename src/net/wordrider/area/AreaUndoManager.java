@@ -105,8 +105,10 @@ final class AreaUndoManager extends UndoManager implements PropertyChangeListene
         //  The compound edit is used to store incremental edits
 
         if (anEdit != null) {
-            final AbstractDocument.DefaultDocumentEvent event = (AbstractDocument.DefaultDocumentEvent) anEdit;
-            final boolean accurate = (event.getType() == DocumentEvent.EventType.CHANGE);
+            String styleChangeTextString = UIManager.getString("AbstractDocument.styleChangeText");
+            // System.out.println("styleChangeText: " + styleChangeTextString);
+            // System.out.println("presentationName: " + anEdit.getPresentationName());
+            boolean accurate = anEdit.getPresentationName().equals(styleChangeTextString);
             compoundEdit = new MyCompoundEdit(editor, accurate);
             compoundEdit.addEdit(anEdit);
         } else {
