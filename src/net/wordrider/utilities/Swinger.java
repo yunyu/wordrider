@@ -19,7 +19,6 @@ import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
-import java.net.URLClassLoader;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.Stack;
@@ -158,7 +157,7 @@ public final class Swinger {
         if (fileName == null)
             return null;
         try {
-            return new ImageIcon(ImageIO.read(((URLClassLoader) Swinger.class.getClassLoader()).findResource(Consts.IMAGESDIR + fileName)));
+            return new ImageIcon(ImageIO.read(Swinger.class.getClassLoader().getResource(Consts.IMAGESDIR + fileName)));
         } catch (final IOException e) {
             logger.severe("Cannot load image " + fileName + "\nReason:" + e.getMessage());
             return null;
@@ -169,7 +168,7 @@ public final class Swinger {
         if (fileName == null)
             return null;
         try {
-            return (ImageIO.read(((URLClassLoader) Swinger.class.getClassLoader()).findResource(Consts.IMAGESDIR + fileName)));
+            return (ImageIO.read(Swinger.class.getClassLoader().getResource(Consts.IMAGESDIR + fileName)));
         } catch (final IOException e) {
             logger.severe("Cannot load image " + fileName + "\nReason:" + e.getMessage());
             return null;

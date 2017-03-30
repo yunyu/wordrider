@@ -3,7 +3,6 @@ package net.wordrider.utilities;
 import java.applet.Applet;
 import java.applet.AudioClip;
 import java.net.URL;
-import java.net.URLClassLoader;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -32,7 +31,7 @@ public class Sound {
     }
 
     private static AudioClip getAudioClip(final String fileName) {
-        final URL url = ((URLClassLoader) Swinger.class.getClassLoader()).findResource(Consts.SOUNDSDIR + fileName);
+        final URL url = Swinger.class.getClassLoader().getResource(Consts.SOUNDSDIR + fileName);
         return Applet.newAudioClip(url);
     }
 

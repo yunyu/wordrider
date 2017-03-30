@@ -4,7 +4,6 @@ import net.wordrider.utilities.Consts;
 
 import java.awt.*;
 import java.net.URL;
-import java.net.URLClassLoader;
 
 /**
  * @author Vity
@@ -29,9 +28,10 @@ final class MainAppSplash {
 
         if (!(containsInterruble(args) || OneInstanceServer.isWordRiderInUse())) {
 
-            final URL imageURL = ((URLClassLoader) MainAppSplash.class.getClassLoader()).findResource(Consts.IMAGESDIR + "splash.gif");
+            final URL imageURL = MainAppSplash.class.getClassLoader().getResource(Consts.IMAGESDIR + "splash.gif");
 
             if (imageURL != null) {
+                System.out.println("imageURL: " + imageURL.toString());
                 splashFrame = SplashWindow.splash(Toolkit.getDefaultToolkit().createImage(imageURL));                
             } else {
                 System.err.println("Splash image not found");

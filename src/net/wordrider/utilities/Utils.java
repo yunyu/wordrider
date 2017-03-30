@@ -108,16 +108,7 @@ public final class Utils {
     }
 
     public static boolean isJVMVersion(final double requiredVersion) {
-        if (actual_java_version == null) {
-            final String javaVersion = System.getProperty("java.version");
-            if (javaVersion == null) {
-                logger.severe("Java version was not specified. Fatal error.");
-                return false;
-            }
-            actual_java_version = javaVersion.substring(0, 3);
-        }
-        final Double actualVersion = new Double(actual_java_version);
-        return actualVersion.compareTo(requiredVersion) >= 0;
+        return true;
     }
 
     /*
